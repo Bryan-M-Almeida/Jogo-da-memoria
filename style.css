@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px); /* 4 colunas de cartas */
+    grid-gap: 10px;
+    perspective: 500px; /* Necessário para o efeito 3D de flip */
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d; /* Para o efeito 3D */
+    transition: transform 0.6s;
+}
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Esconde a face traseira quando virada */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.card-back {
+    background-color: #fff; /* Cor de fundo da frente da carta */
+    color: #333; /* Cor do texto/símbolo da frente da carta */
+}
+
+.card-front {
+    background-color: #448aff; /* Cor de fundo do verso da carta */
+    color: #fff;
+    transform: rotateY(180deg); /* Posiciona o verso da carta inicialmente virado para trás */}
